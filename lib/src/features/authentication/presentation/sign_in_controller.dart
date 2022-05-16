@@ -7,8 +7,8 @@ class SignInScreenController extends StateNotifier<AsyncValue<void>> {
   final FakeAuthRepository authRepository;
 
   Future<void> signInAnonymously() async {
-    state = const AsyncLoading<void>();
-    state = await AsyncValue.guard<void>(authRepository.signInAnonymously);
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(authRepository.signInAnonymously);
   }
 }
 
