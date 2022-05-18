@@ -21,13 +21,6 @@ class AccountScreen extends ConsumerWidget {
             : const Text('Account'),
         actions: [
           TextButton(
-            child: Text(
-              'Logout',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6!
-                  .copyWith(color: Colors.white),
-            ),
             onPressed: state.isLoading
                 ? null
                 : () async {
@@ -35,6 +28,13 @@ class AccountScreen extends ConsumerWidget {
                         .read(accountScreenControllerProvider.notifier)
                         .signOut();
                   },
+            child: Text(
+              'Logout',
+              style: Theme.of(context)
+                  .textTheme
+                  .headline6!
+                  .copyWith(color: Colors.white),
+            ),
           ),
         ],
       ),

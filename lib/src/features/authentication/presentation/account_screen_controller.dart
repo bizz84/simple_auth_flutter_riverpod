@@ -3,7 +3,7 @@ import 'package:simple_auth_flutter_riverpod/src/features/authentication/data/fa
 
 class AccountScreenController extends StateNotifier<AsyncValue<void>> {
   AccountScreenController({required this.authRepository})
-      : super(const AsyncValue.data(null));
+      : super(const AsyncData(null));
   final FakeAuthRepository authRepository;
 
   Future<void> signOut() async {
@@ -12,9 +12,8 @@ class AccountScreenController extends StateNotifier<AsyncValue<void>> {
   }
 }
 
-final accountScreenControllerProvider =
-    StateNotifierProvider.autoDispose<AccountScreenController, AsyncValue<void>>(
-        (ref) {
+final accountScreenControllerProvider = StateNotifierProvider.autoDispose<
+    AccountScreenController, AsyncValue<void>>((ref) {
   return AccountScreenController(
     authRepository: ref.watch(authRepositoryProvider),
   );

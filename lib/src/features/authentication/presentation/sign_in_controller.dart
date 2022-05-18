@@ -3,7 +3,7 @@ import 'package:simple_auth_flutter_riverpod/src/features/authentication/data/fa
 
 class SignInScreenController extends StateNotifier<AsyncValue<void>> {
   SignInScreenController({required this.authRepository})
-      : super(const AsyncData<void>(null));
+      : super(const AsyncData(null));
   final FakeAuthRepository authRepository;
 
   Future<void> signInAnonymously() async {

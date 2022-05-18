@@ -13,11 +13,24 @@ void main() {
     controller = SignInScreenController(authRepository: authRepository);
   });
   group('SignInScreenController', () {
-    test('initial state is AsyncValue.data', () {
+    test('initial state is AsyncData', () {
       verifyNever(authRepository.signOut);
       expect(controller.debugState, const AsyncData<void>(null));
     });
 
+    test('signInAnonymously success', () async {
+      // setup
+      final authRepository = MockAuthRepository();
+      when(authRepository.signInAnonymously).thenAnswer(
+        (_) => Future.value(),
+      );
+      final controller = SignInScreenController(authRepository: authRepository);
+      // run
+      await controller.signInAnonymously();
+      // verify
+      verify(authRepository.signInAnonymously).called(1);
+      expect(controller.debugState, const AsyncData<void>(null));
+    });
     test(
       'signInAnonymously success',
       () async {
@@ -53,6 +66,7 @@ void main() {
             const AsyncLoading<void>(),
             predicate<AsyncValue<void>>((value) {
               expect(value.hasError, true);
+              expect(value, isA<AsyncError<void>>());
               return true;
             }),
           ]),

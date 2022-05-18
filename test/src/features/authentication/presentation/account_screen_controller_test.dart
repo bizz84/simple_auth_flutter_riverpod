@@ -36,7 +36,6 @@ void main() {
         await controller.signOut();
         // verify
         verify(authRepository.signOut).called(1);
-        //expect(controller.debugState, const AsyncData<void>(null));
       },
       timeout: const Timeout(Duration(milliseconds: 500)),
     );

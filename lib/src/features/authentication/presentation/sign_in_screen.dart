@@ -22,14 +22,14 @@ class SignInScreen extends ConsumerWidget {
           width: 200,
           height: 50,
           child: ElevatedButton(
-            child: state.isLoading
-                ? const CircularProgressIndicator()
-                : const Text('Sign in anonymously'),
             onPressed: state.isLoading
                 ? null
                 : () => ref
                     .read(signInScreenControllerProvider.notifier)
                     .signInAnonymously(),
+            child: state.isLoading
+                ? const CircularProgressIndicator()
+                : const Text('Sign in anonymously'),
           ),
         ),
       ),
