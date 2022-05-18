@@ -66,7 +66,6 @@ void main() {
             const AsyncLoading<void>(),
             predicate<AsyncValue<void>>((value) {
               expect(value.hasError, true);
-              expect(value, isA<AsyncError<void>>());
               return true;
             }),
           ]),
