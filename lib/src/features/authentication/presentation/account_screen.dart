@@ -32,7 +32,7 @@ class AccountScreen extends ConsumerWidget {
               'Logout',
               style: Theme.of(context)
                   .textTheme
-                  .headline6!
+                  .titleLarge!
                   .copyWith(color: Colors.white),
             ),
           ),
